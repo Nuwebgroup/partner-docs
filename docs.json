@@ -32,7 +32,8 @@
               "topics/integration-settings",
               "topics/sso",
               "topics/admin-sso",
-              "topics/users-and-roles"
+              "topics/users-and-roles",
+              "topics/permissions-reference"
             ]
           }
         ]

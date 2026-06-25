@@ -1,0 +1,113 @@
+---
+title: "Permissions Reference"
+description: "Every permission a hub role can grant, grouped by area, with what each one controls and the impact of granting it."
+---
+
+## Overview
+
+This page lists every permission available when building a **hub role** — the roles that control what hub users can do inside the Partner Hub. Use it to look up what an individual permission does and what granting it allows.
+
+It's a companion to [Users & Roles](/topics/users-and-roles), which explains how the hub's role system works. Read that page first for the concepts; come here to look up a specific permission.
+
+<Note>
+Hub roles are separate from company-level roles. Abilities granted by a hub role are automatically scoped to the resellers a user is linked to — a hub user who can view companies only sees companies belonging to their resellers.
+</Note>
+
+<Note>
+When you build a **company role** or a **global reseller role** from the hub, the available permissions are the company-level set, not the hub permissions on this page. Those are documented in the core platform [Permissions Reference](https://docs.nuwebgroup.com/core-platform/system-access/permissions-reference).
+</Note>
+
+## How to Read This Reference
+
+Permissions are organised into **groups** by the type of data they apply to (Companies, Users, Plans, and so on). For each group you choose which **actions** to allow and which **records** they apply to.
+
+### Standard Actions
+
+| Action | What it allows |
+|--------|----------------|
+| **Manage** | Grants **View**, **Edit**, **Delete**, and **Restore** for records in scope. It does **not** include Create or View list of. |
+| **Create** | Create new records of this type. |
+| **View list of** | See the full list of this record type. |
+| **View** | Open and view an individual record. |
+| **Edit** | Modify a record. |
+| **Delete** / **Restore** | Delete and restore records. |
+| **Access** | A special action on a few groups (Companies, Users) — see below. |
+
+### Which Records a Permission Applies To
+
+| Visibility | Effect |
+|------------|--------|
+| **All** | Every record of that type (within the user's resellers). |
+| **Selected** | Only specific records you choose. |
+| **Created by them** | Only records the user created. |
+
+<Note>
+You can only grant abilities you hold yourself, so a hub user cannot build a role more powerful than their own.
+</Note>
+
+## Reseller & Company Management
+
+These groups control the core partner operations — managing resellers and the companies beneath them.
+
+| Group | What it controls | Specialised permissions |
+|-------|------------------|-------------------------|
+| **Resellers** | Reseller records. | **Edit general settings for** — edit a reseller's general settings, branding, and fees configuration. |
+| **Companies** | The companies under a reseller. | **Access**, **Edit fees for**, **Toggle live/demo mode for** — see below. |
+
+<Warning>
+**Companies → Access** signs a hub user into a company's admin area with full access for that company. It's how partners support and configure companies directly, but it grants broad reach into that company's data — restrict it to staff who need it.
+</Warning>
+
+| Company permission | What it controls |
+|--------------------|------------------|
+| **Edit fees for** | Edit a company's [fees](/topics/reseller-fees), including fee invoicing settings where the reseller has fee invoicing enabled. |
+| **Toggle live/demo mode for** | Switch a company between live and demo mode. Demo mode prevents real payment processing and is used for testing before a company [goes live](/topics/plans-and-packages). |
+
+## Hub Users & Roles
+
+| Group | What it controls | Specialised permissions |
+|-------|------------------|-------------------------|
+| **Users** | Hub [user accounts](/topics/users-and-roles). | **Access** — sign in as another hub user to see what they see. |
+| **Roles** | Hub and reseller-level [roles](/topics/users-and-roles). | — |
+
+<Warning>
+**Users → Access** lets a hub user impersonate another hub user. It's useful for troubleshooting and verifying a role is configured correctly, but it grants that user the other account's view of the hub — restrict it to administrators.
+</Warning>
+
+## Billing & Plans
+
+| Group | What it controls |
+|-------|------------------|
+| **Plans** | Create and manage [plans and packages](/topics/plans-and-packages) — the bundles of features and fees companies can be assigned. |
+| **Invoices** | View [company invoices](/topics/company-invoices) (View / View list of). |
+| **Tax bands** | Manage global tax bands that apply across companies. |
+
+## Monitoring & Integrations
+
+| Group | What it controls |
+|-------|------------------|
+| **Partner API** | Manage [partner API](/topics/api-access) access tokens. |
+| **Payment tracker** | View payment processing attempts across companies (View list of only) — useful for diagnosing failed or pending payments. |
+| **API logs** | View incoming API request logs (View list of only) — useful for debugging integrations. |
+
+## Reporting
+
+| Group / permission | What it controls |
+|--------------------|------------------|
+| **Custom reports** | Build and manage hub-level custom reports. |
+| **Scheduled reports** | Manage scheduled runs of those reports. |
+| **Widgets** | Dashboard widgets used to surface report data. |
+| **View default reports** | Access the built-in default reports at hub level. |
+| **Access upcoming events** | View the upcoming-events overview across companies. |
+| **Access translations** | Access the tools for editing system text. |
+
+## Super Users
+
+The **super user** role bypasses every permission on this page — a super user has unrestricted access to every reseller, company, and feature in the hub. Assigning it triggers a confirmation prompt, and it can only be added by editing an existing user (not during creation). See [Super Users](/topics/users-and-roles#super-users).
+
+## Related
+
+- [Users & Roles](/topics/users-and-roles) — how the hub role system works
+- [Feature Flags & Limitations](/topics/feature-flags) — control which capabilities companies have
+- [Plans & Packages](/topics/plans-and-packages) — bundles of features and fees
+- [Company-level Permissions Reference](https://docs.nuwebgroup.com/core-platform/system-access/permissions-reference) — the permissions used when building company and reseller-default roles
